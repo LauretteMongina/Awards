@@ -12,7 +12,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('profile/', views.profile, name='profile'),
     path('project/<post>', views.project, name='project'),
-    path('search/', views.search_results, name='search_results'),
+    # path('search/', views.search_results, name='search_results'),
     url(r'^api/projects/$', views.ProjectList.as_view()),
     url(r'^api/profiles/$', views.ProfileList.as_view())
 ]
