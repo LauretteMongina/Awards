@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
+*
+{
+  font-family: 'Nunito', sans-serif;
+}
+label{
+  color: black;
+  font-weight: bold;
+  font-family: 'Nunito', sans-serif;
+}
+li{
+  text-decoration: none;
+}
+body{
+  background-color: #f8f8f8 !important;
+}
+.mymodal{
+  height: 500px !important;
+    top: 100px !important;
+    /* font-size: 20px !important; */
+}
