@@ -6,7 +6,7 @@ Laurette Mong'ina
 # Description  
 A Django application that allows users to post their projects and they can be rated by other users based on design, usability, and content. Afterward, an average of the scores is taken and an average score taken.
 ##  Live Link  
-https://graawards.herokuapp.com/
+https://gramawards.herokuapp.com/
   
 
 
