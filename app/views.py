@@ -113,13 +113,13 @@ def project(request, post):
     }
     return render(request, 'project.html', params)
 
-# def search_results(request):
-#     if 'post' in request.GET and request.GET['post']:
-#         title = request.GET.get("post")
-#         search = Post.search_by_title(title)
-#         message = f'{title}'
+def search_results(request):
+    if 'post' in request.GET and request.GET['post']:
+        title = request.GET.get("post")
+        search = Post.search_by_title(title)
+        message = f'{title}'
 
-#         return render(request, 'search.html',{'message':message, 'search':search})
+        return render(request, 'search.html',{'message':message, 'search':search})
 @login_required(login_url='login')
 def profile(request):
     profile = Profile.objects.get(user = request.user)
