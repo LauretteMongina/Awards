@@ -1,0 +1,44 @@
+{% load crispy_forms_tags %}
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" id="nbar" style="display: inline;background-color: black;">
+  <div class="container">
+      <a class="navbar-brand" href="{% url 'index' %}"> <strong class="mr-4 brand" > Awwards</strong></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse ml-4" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto" style="text-decoration: none;display: inline;">
+              <li class="nav-item active">
+                  <form class="form-inline" method="get" action="{% url 'search_results' %}">
+                      {% csrf_token %}
+                      <div class="md-form my-0">
+                          <input class="form-control mr-sm-2 " type="text" placeholder="Search" name="title" aria-label="Search">
+                      </div>
+                  </form>
+              </li>
+          </ul>
+                <ul class="navbar-nav navbar-right">
+                  {% if user.is_authenticated%}
+                <li><a href="{% url 'profile' %}" class="item nav-item">
+                     {{ request.user }}<i class="user icon"></i>
+                </a></li>
+    
+                <li><a href="{% url 'logout' %}" class="ui item nav-item ml-2">
+                    Logout
+                </a></li>
+            {% else %}
+            <li><a href="/accounts/login" class="ui item nav-item">
+                    Login
+                </a></li>
+            {% endif %}
+            <button class="btn btn-info btn-sm ml-2" id="site" data-toggle="modal" data-target=".bd-example-modal-xl">
+                Submit your site
+            </button>
+      </div>
+      </ul>
+      </div>
+      </div>
+      </nav>
+
+  
+  
