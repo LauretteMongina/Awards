@@ -31,7 +31,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="post" enctype="multipart/form-data">
+                        <form action="{% url 'index' %}" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form|crispy }}
                             <button type="submit" class="btn-info btn-sm mt-2">Post</button>
@@ -48,10 +48,10 @@
 
             <div class="templates display">
                 {% for post in posts %}
-                <div class="col-md-5 mb-4 mt-2">
+                <div class="col-md-4 mb-4 mt-2">
                     <div class="card">
                         <div class="view overlay">
-                            <img class="card-img-top" src="{{ post.image.url }}"
+                            <img class="card-img-top img-fluid" src="{{ post.image.url }}"
                                  alt="{{photo.title}}">
                             <a href="{% url 'project' post.title %}">
                                 <div class="mask rgba-white-slight"></div>
@@ -77,9 +77,12 @@
             {% endif %}
         </div>
     </div>
-</div>
-</div>
 
+<style>
+    .img-fluid{
+        height: 200px;
+    }
+</style>
 
 {% endblock %}
 
