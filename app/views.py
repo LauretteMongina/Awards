@@ -46,6 +46,7 @@ def index(request):
             post = form.save(commit=False)
             post.user = request.user
             post.save()
+            image = cloudinary.uploader.upload(image, crop="limit", width=500, height=500)
     else:
         form = PostForm()
 
@@ -71,9 +72,9 @@ def registration(request):
 @login_required(login_url='login')
 def project(request, post):
     post = Post.objects.get(title=post)
-    ratings = Rating.objects.filter(user=request.user, post=post).first()
+    rating = Rating.objects.filter(user=request.user, post=post).first()
     rating_status = None
-    if ratings is None:
+    if rating is None:
         rating_status = False
     else:
         rating_status = True
@@ -86,21 +87,19 @@ def project(request, post):
             rate.save()
             post_rating = Rating.objects.filter(post=post)
             
-            usability_rating = [usability.usability for us in post_rating]
+            usability_rating = [usability.usability for usability in post_rating]
             usability_average = statistics.mean(usability_rating)
             
             design_rating = [design.design for design in post_rating]
             design_average = statistics.mean(design_rating)
 
-            content_ratings = [content.content for content in post_rating]
+            content_rating = [content.content for content in post_rating]
             content_average = statistics.mean(content_rating)
 
-            score = (design_average + usability_average + content_average) / 3
             print(score)
-            rate.design_average = round(design_average, 2)
-            rate.usability_average = round(usability_average, 2)
-            rate.content_average = round(content_average, 2)
-            rate.score = round(score, 2)
+            rate.design_average = design_average
+            rate.usability_average = usability_average
+            rate.content_average = content_average
             rate.save()
             return HttpResponseRedirect(request.path_info)
     else:
