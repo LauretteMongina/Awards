@@ -95,7 +95,8 @@ def project(request, post):
 
             content_rating = [content.content for content in post_rating]
             content_average = statistics.mean(content_rating)
-
+            
+            score = (design_average + usability_average + content_average) / 3
             print(score)
             rate.design_average = design_average
             rate.usability_average = usability_average
