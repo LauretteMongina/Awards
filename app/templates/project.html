@@ -1,20 +1,18 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="container" style="margin-top:8%">
-    <h5 class="mb-4 mt-4">{{ post.title }} by {{ post.developer.username }} <span
-            id="heart"> <i class="fas fa-heart"></i></span></h5>
+<div class="container" style="margin-top:6%">
+    <h5 class="mb-4 mt-4">{{ post.title }} by {{ post.developer.username }}</h5>
 
     <div class="card">
-        <div class="view overlay" style="background-color: black;">
-            <img class="card-img-top" style="visibility:hidden" width="100%"
-                 src="{{ post.photo.url }}-/crop/1440x720/center/-/quality/lightest/" alt="{{photo.title}}">
-            <a href="">
+        <div class="view" style="background-color: black;">
+            <a href="" style="color: white;"></a>
                 <div class="mask rgba-black-slight">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-3"></div>
-                            <div class="col-md-6 d-flex flex-row mx-auto" style="margin-top:20%">
+                            <h3 style="color: white;margin-top: 5%;">Average ratings</h3>
+                            <div class="col-md-6 d-flex" style="margin-top:18%;color: skyblue;">
                                 {% for rating in post.ratings.all %}
                                 {% if forloop.counter is post.ratings.all.count %}
                                 <div id="design">{{ rating.design_average}}<br>
@@ -53,11 +51,11 @@
                     {% for rating in post.ratings.all %}
                     {% if forloop.counter is post.ratings.all.count %}
                     <p class="" ><h5>{{ rating.score }}</h5>
-                        <span class="sc">Average Score</span>
+                        <span class="" style="color: lightskyblue;">Average Score</span>
                     </a>
-                    <p> Design average: {{rating.design}} </p>
-                    <p> Usability average: {{rating.usability}} </p>
-                    <p> Content average: {{rating.content}} </p>
+                    <p> Design rate: {{rating.design}} </p>
+                    <p> Usability rate: {{rating.usability}} </p>
+                    <p> Content rate: {{rating.content}} </p>
                     {% endif %}
                     {% endfor %}
                 </div>
