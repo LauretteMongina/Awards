@@ -41,15 +41,15 @@
             </p>
             <p>{{ post.description }}</p>
             <hr>
-            <p class="card-text "><img src="{{post.user.profile.profile_picture.url}}" class="nav-img mr-2" alt="">
-                By {{post.developer.username|title}} <span style="float:right">{{post.created_at|date}}</span>
+            <p class="card-text "><img src="{{post.user.profile.photo.url}}" class="nav-img mr-2" alt="">
+                <span style="float:right">{{post.created_at|date}}</span>
             </p>
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                     <h3 class="D-block mx-auto">Ratings Scores</h3>
                     {% for rating in post.ratings.all %}
-                    {% if forloop.counter is post.ratings.all.count %}
+                    {% if whileloop.counter is post.ratings.all.count %}
                     <p class="" ><h5>{{ rating.score }}</h5>
                         <span class="" style="color: lightskyblue;">Average Score</span>
                     </a>
